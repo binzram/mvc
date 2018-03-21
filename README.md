@@ -18,7 +18,11 @@ Willkommen beim MVC des Bbc. In diesem Repository findest du den Code sowie eine
 
 ### Vorbereitung
 
-Bevor du mit der Installation beginnen kannst, ist es wichtig, dass du auf deinem PC einen funktionierenden XAMPP Stack am laufen hast. Sollte das nicht der Fall sein, findest du im Internet eine Anleitung dazu.
+Füge das PHP-Excutable zum Pfad:
+ * Windows-Taste + R zum starten der Windows-Eingabeaufforderung
+ * Programm starten: „SystemPropertiesAdvanced.exe“
+ * Ganz unten auf „Umgebungsvariablen“
+ * Variable „Path“ bearbeiten und "C:\php7\php" eintragen
 
 ### Installation
 
@@ -33,35 +37,13 @@ Um später mit einem DNS Namen auf die Seite zugreifen zu können, musst du den 
 127.0.0.1    my-project.local
 ```
 
-Damit der Apache Webserver aus dem XAMPP Stack weiss, welcher DNS Namen zu welchem Ordner auf dem Dateisystem gehört, musst du einen VirtualHost erstellen. Dazu musst du die Datei `C:\xampp\apache\conf\extra\httpd-vhosts.conf` folgendermassen anpassen.
+Öffne ein `cmd` und wechsle in dein Projektverzeichniss. Du kannst den Server mit folgenden Befehlen managen:
 
-```apache
-# [...]
+| Befehl              | Beschrieb             |
+|---------------------|-----------------------|
+| `bin/start_server`  | Starten des Webserver |
+| `bin/status_server` | Status des Webserver  |
+| `bin/stop_server`   | Stoppen des Webserver |
 
-# Wird benötigt um VirtualHosts für alle Requests auf Port 80 zu aktivieren
-NameVirtualHost *:80
 
-# [...]
-
-# Eigentliche VHost Konfiguration
-<VirtualHost 127.0.0.1>
-    # DNS Name auf den der VHost hören soll
-    ServerName my-project.local
-
-    # Ort an dem Das Projekt zu finden ist
-    DocumentRoot "c:/dev/my-project/public"
-
-    # Nochmals
-    <Directory "c:/dev/my-project/public">
-        Options Indexes FollowSymLinks
-        Options +Includes
-        AllowOverride All
-        Order allow,deny
-        Require all granted
-        Allow from All
-        DirectoryIndex index.php
-    </Directory>
-</VirtualHost>
-```
-
-Nun starte den Apache über das XAMPP Control Panel neu und du solltest mit dem Browser deines Vertrauens auf die Seite `http://my-project.local` zugreifen können.
+Nun solltest du mit dem Browser auf die Seite `http://my-project.local` zugreifen können.
