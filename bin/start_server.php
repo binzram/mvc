@@ -8,3 +8,5 @@ $outputfile = 'var/server.log';
 $pidfile = 'var/webserver.pid';
 
 exec(sprintf('%s > %s 2>&1 & echo $! > %s', $cmd, $outputfile, $pidfile));
+
+echo PHP_EOL.'Server started'.PHP_EOL.PHP_EOL;

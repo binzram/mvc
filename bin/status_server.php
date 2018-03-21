@@ -8,7 +8,7 @@ $pidfile = 'var/webserver.pid';
 $pid = intval(file_get_contents($pidfile));
 
 if (!empty($pid)) {
-    echo 'running';
+    echo PHP_EOL.'Server running'.PHP_EOL.PHP_EOL;
 } else {
-    echo 'not running';
+    echo PHP_EOL.'Server not running'.PHP_EOL.PHP_EOL;
 }
